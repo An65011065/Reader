@@ -11,7 +11,7 @@
 		0042EBCB13FF3000769B55C7 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 100248C06FA76F20956B197A /* ZIPFoundation */; };
 		1A516F3395AB5C6E690A25E8 /* EPUBBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8CEB38AABD5CBBCEF4A63B /* EPUBBook.swift */; };
 		2472AC1F638BC96CEA93CF3E /* ReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4144D5315B9C2E90C65393E5 /* ReaderView.swift */; };
-		33F7EE4458776961C130EC6D /* VoiceReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A4AAAFE890979E1F07DCC /* VoiceReaderApp.swift */; };
+		33F7EE4458776961C130EC6D /* LineaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439A4AAAFE890979E1F07DCC /* LineaApp.swift */; };
 		3597E1CC7252FCA1A45C16EB /* BookChaptersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C508F2E75D3DE06AB7F442F /* BookChaptersView.swift */; };
 		44EAC0611A2A6211A23B1298 /* ZenModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09F8384E1C9592094182CCF /* ZenModeView.swift */; };
 		50617B81D68D85BC9A408062 /* LibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6594FCF76A9FA86973D221A2 /* LibraryStore.swift */; };
@@ -30,12 +30,12 @@
 		2C508F2E75D3DE06AB7F442F /* BookChaptersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookChaptersView.swift; sourceTree = "<group>"; };
 		4144D5315B9C2E90C65393E5 /* ReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderView.swift; sourceTree = "<group>"; };
 		42E83D5063423D320908B7ED /* EPUBParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPUBParser.swift; sourceTree = "<group>"; };
-		439A4AAAFE890979E1F07DCC /* VoiceReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceReaderApp.swift; sourceTree = "<group>"; };
+		439A4AAAFE890979E1F07DCC /* LineaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineaApp.swift; sourceTree = "<group>"; };
 		4526B3FD9046D3EF5C415486 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		644BD7B195D7343DCC03944C /* BookReaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReaderContainerView.swift; sourceTree = "<group>"; };
 		656543801AB7E62469F34B52 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		6594FCF76A9FA86973D221A2 /* LibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStore.swift; sourceTree = "<group>"; };
-		79A9379873AB4E4E69B373E9 /* VoiceReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79A9379873AB4E4E69B373E9 /* Linea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8007030756C90473A7D1F5DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87EFCECDE9A3FFC936766052 /* ReadingSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingSettings.swift; sourceTree = "<group>"; };
 		891FCD2770DA8B0ED6C55D3D /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
@@ -61,18 +61,18 @@
 		07F446596EC078EE25F771F7 = {
 			isa = PBXGroup;
 			children = (
-				0D948FC5655BD4129729976C /* VoiceReader */,
+				0D948FC5655BD4129729976C /* Linea */,
 				3613ECCBB07931E647F4C561 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0D948FC5655BD4129729976C /* VoiceReader */ = {
+		0D948FC5655BD4129729976C /* Linea */ = {
 			isa = PBXGroup;
 			children = (
-				439A4AAAFE890979E1F07DCC /* VoiceReaderApp.swift */,
+				439A4AAAFE890979E1F07DCC /* LineaApp.swift */,
 				9BC5D5C48FFF228E19E85CFC /* Sources */,
 			);
-			path = VoiceReader;
+			path = Linea;
 			sourceTree = "<group>";
 		};
 		2A87BF21F6BED7E835448308 /* Views */ = {
@@ -93,7 +93,7 @@
 		3613ECCBB07931E647F4C561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79A9379873AB4E4E69B373E9 /* VoiceReader.app */,
+				79A9379873AB4E4E69B373E9 /* Linea.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,9 +139,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C4490430CE5A8C28D873009D /* VoiceReader */ = {
+		C4490430CE5A8C28D873009D /* Linea */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 48B12818D97E9FBC49F32459 /* Build configuration list for PBXNativeTarget "VoiceReader" */;
+			buildConfigurationList = 48B12818D97E9FBC49F32459 /* Build configuration list for PBXNativeTarget "Linea" */;
 			buildPhases = (
 				4E50D5D8577E06499484C0FA /* Sources */,
 				2806CF1CCC7877A31856E50B /* Frameworks */,
@@ -150,12 +150,12 @@
 			);
 			dependencies = (
 			);
-			name = VoiceReader;
+			name = Linea;
 			packageProductDependencies = (
 				100248C06FA76F20956B197A /* ZIPFoundation */,
 			);
-			productName = VoiceReader;
-			productReference = 79A9379873AB4E4E69B373E9 /* VoiceReader.app */;
+			productName = Linea;
+			productReference = 79A9379873AB4E4E69B373E9 /* Linea.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -167,7 +167,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1620;
 			};
-			buildConfigurationList = 03EB92BE19A187285CECBAEF /* Build configuration list for PBXProject "VoiceReader" */;
+			buildConfigurationList = 03EB92BE19A187285CECBAEF /* Build configuration list for PBXProject "Linea" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -184,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C4490430CE5A8C28D873009D /* VoiceReader */,
+				C4490430CE5A8C28D873009D /* Linea */,
 			);
 		};
 /* End PBXProject section */
@@ -207,7 +207,7 @@
 				987E7DDDCF00B2CDD2A78FD9 /* ReadingSettings.swift in Sources */,
 				FD4A3B44B81A1C435E7C144A /* ReadingSettingsView.swift in Sources */,
 				EF7D0852C19139D96EC19784 /* SpeechService.swift in Sources */,
-				33F7EE4458776961C130EC6D /* VoiceReaderApp.swift in Sources */,
+				33F7EE4458776961C130EC6D /* LineaApp.swift in Sources */,
 				44EAC0611A2A6211A23B1298 /* ZenModeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,8 +224,8 @@
 				DEVELOPMENT_TEAM = QY2W4DZ58S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "VoiceReader needs access to your files to open EPUB books.\n";
-				INFOPLIST_KEY_NSPersonalVoiceUsageDescription = "VoiceReader can read books in your own Personal Voice.\n";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Linea needs access to your files to open EPUB books.\n";
+				INFOPLIST_KEY_NSPersonalVoiceUsageDescription = "Linea can read books in your own Personal Voice.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight\n";
@@ -235,7 +235,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anweshanadhikari.voicereader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anweshanadhikari.linea;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,8 +314,8 @@
 				DEVELOPMENT_TEAM = QY2W4DZ58S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "VoiceReader needs access to your files to open EPUB books.\n";
-				INFOPLIST_KEY_NSPersonalVoiceUsageDescription = "VoiceReader can read books in your own Personal Voice.\n";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Linea needs access to your files to open EPUB books.\n";
+				INFOPLIST_KEY_NSPersonalVoiceUsageDescription = "Linea can read books in your own Personal Voice.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight\n";
@@ -325,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.anweshanadhikari.voicereader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anweshanadhikari.linea;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -391,7 +391,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		03EB92BE19A187285CECBAEF /* Build configuration list for PBXProject "VoiceReader" */ = {
+		03EB92BE19A187285CECBAEF /* Build configuration list for PBXProject "Linea" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3EDD92EE194AA824C4B1D5D8 /* Debug */,
@@ -400,7 +400,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		48B12818D97E9FBC49F32459 /* Build configuration list for PBXNativeTarget "VoiceReader" */ = {
+		48B12818D97E9FBC49F32459 /* Build configuration list for PBXNativeTarget "Linea" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A257F173C370832EC5883C8 /* Debug */,

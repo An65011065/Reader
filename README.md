@@ -1,4 +1,4 @@
-# VoiceReader
+# Linea
 
 An open-source EPUB reader for iPhone and iPad that reads books aloud using Apple's on-device text-to-speech, with real-time word highlighting so you can follow along.
 
@@ -53,7 +53,7 @@ An open-source EPUB reader for iPhone and iPad that reads books aloud using Appl
 git clone https://github.com/An65011065/Reader.git
 cd Reader
 xcodegen generate   # only needed if you modify project.yml
-open VoiceReader.xcodeproj
+open Linea.xcodeproj
 ```
 
 Then select your device or simulator and hit Run. No API keys, no accounts, no backend — everything runs on-device.
@@ -63,8 +63,8 @@ Then select your device or simulator and hit Run. No API keys, no accounts, no b
 ## Project Structure
 
 ```
-VoiceReader/
-├── VoiceReaderApp.swift          # app entry point
+Linea/
+├── LineaApp.swift          # app entry point
 └── Sources/
     ├── Models/
     │   ├── EPUBBook.swift        # book + chapter model, BookProgress

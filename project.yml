@@ -1,6 +1,6 @@
-name: VoiceReader
+name: Linea
 options:
-  bundleIdPrefix: com.voicereader
+  bundleIdPrefix: com.linea
   deploymentTarget:
     iOS: "16.0"
   xcodeVersion: "16.2"
@@ -11,17 +11,17 @@ packages:
     from: 0.9.0
 
 targets:
-  VoiceReader:
+  Linea:
     type: application
     platform: iOS
     deploymentTarget: "16.0"
     sources:
-      - path: VoiceReader
+      - path: Linea
     dependencies:
       - package: ZIPFoundation
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.anweshanadhikari.voicereader
+        PRODUCT_BUNDLE_IDENTIFIER: com.anweshanadhikari.linea
         SWIFT_VERSION: "5.9"
         TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
@@ -32,7 +32,7 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: >
           UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_NSDocumentsFolderUsageDescription: >
-          VoiceReader needs access to your files to open EPUB books.
+          Linea needs access to your files to open EPUB books.
         INFOPLIST_KEY_NSPersonalVoiceUsageDescription: >
-          VoiceReader can read books in your own Personal Voice.
+          Linea can read books in your own Personal Voice.
         ENABLE_PREVIEWS: YES

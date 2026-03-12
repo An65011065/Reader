@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct VoiceReaderApp: App {
+struct LineaApp: App {
     @StateObject private var library = LibraryStore()
     @StateObject private var settings = ReadingSettings()
 
