@@ -1,7 +1,8 @@
 # Xcode
 *.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
-*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.dependencies
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/workspace-state.json
 DerivedData/
 *.pbxuser
 *.mode1v3
@@ -15,7 +16,8 @@ xcuserdata/
 # Swift Package Manager
 .build/
 .swiftpm/
-*.resolved
+# Note: Package.resolved is intentionally tracked so contributors get
+# reproducible dependency versions. Only .resolved files from Carthage etc. ignored.
 
 # macOS
 .DS_Store
