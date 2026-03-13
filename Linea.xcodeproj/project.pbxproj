@@ -57,6 +57,17 @@
 		};
 /* End PBXFrameworksBuildPhase section */
 
+/* Begin PBXResourcesBuildPhase section */
+		AA000001000000000000AAA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001000000000000AAA2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXGroup section */
 		07F446596EC078EE25F771F7 = {
 			isa = PBXGroup;
@@ -71,6 +82,7 @@
 			children = (
 				439A4AAAFE890979E1F07DCC /* LineaApp.swift */,
 				9BC5D5C48FFF228E19E85CFC /* Sources */,
+				AA000001000000000000AAA1 /* Assets.xcassets */,
 			);
 			path = Linea;
 			sourceTree = "<group>";
@@ -145,6 +157,7 @@
 			buildPhases = (
 				4E50D5D8577E06499484C0FA /* Sources */,
 				2806CF1CCC7877A31856E50B /* Frameworks */,
+				AA000001000000000000AAA3 /* Resources */,
 			);
 			buildRules = (
 			);
