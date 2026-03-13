@@ -1,5 +1,6 @@
 import SwiftUI
 import AVFoundation
+import UIKit
 
 // Speed options as a multiplier of AVSpeechUtteranceDefaultSpeechRate
 private let speedOptions: [(label: String, multiplier: Float)] = [
@@ -20,6 +21,7 @@ struct PlayerControlsView: View {
 
     @State private var expanded = false
     @State private var hideTask: Task<Void, Never>?
+    @State private var showVoiceSetupAlert = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -138,46 +140,74 @@ struct PlayerControlsView: View {
     // MARK: - Voice menu
 
     private var voiceMenu: some View {
-        Menu {
-            // Personal Voice section (iOS 17+)
-            let personalVoices: [AVSpeechSynthesisVoice] = {
-                if #available(iOS 17.0, *) {
-                    return speech.availableVoices.filter { $0.voiceTraits.contains(.isPersonalVoice) }
-                }
-                return []
-            }()
-            if !personalVoices.isEmpty {
-                Section("Your Voice") {
-                    ForEach(personalVoices, id: \.identifier) { voice in
-                        voiceButton(voice, icon: "person.wave.2.fill")
-                    }
-                }
-            }
-
-            // Quality tiers
-            ForEach([AVSpeechSynthesisVoiceQuality.premium, .enhanced, .default], id: \.rawValue) { quality in
-                let voices = speech.availableVoices.filter { isNonPersonalVoice($0, quality: quality) }
-                if !voices.isEmpty {
-                    Section(quality.label) {
-                        ForEach(voices, id: \.identifier) { voice in
-                            voiceButton(voice, icon: nil)
+        Group {
+            if speech.hasEnhancedVoices {
+                Menu {
+                    // Personal Voice section (iOS 17+)
+                    let personalVoices: [AVSpeechSynthesisVoice] = {
+                        if #available(iOS 17.0, *) {
+                            return speech.availableVoices.filter { $0.voiceTraits.contains(.isPersonalVoice) }
+                        }
+                        return []
+                    }()
+                    if !personalVoices.isEmpty {
+                        Section("Your Voice") {
+                            ForEach(personalVoices, id: \.identifier) { voice in
+                                voiceButton(voice, icon: "person.wave.2.fill")
+                            }
                         }
                     }
+
+                    // Quality tiers (only Premium and Enhanced - no Standard)
+                    ForEach([AVSpeechSynthesisVoiceQuality.premium, .enhanced], id: \.rawValue) { quality in
+                        let voices = speech.availableVoices.filter { isNonPersonalVoice($0, quality: quality) }
+                        if !voices.isEmpty {
+                            Section(quality.label) {
+                                ForEach(voices, id: \.identifier) { voice in
+                                    voiceButton(voice, icon: nil)
+                                }
+                            }
+                        }
+                    }
+                } label: {
+                    voiceMenuLabel
+                }
+            } else {
+                Button(action: { showVoiceSetupAlert = true }) {
+                    voiceMenuLabel
                 }
             }
-        } label: {
-            HStack(spacing: 3) {
-                Image(systemName: "waveform")
-                    .font(.caption.weight(.semibold))
-                Text(speech.selectedVoice?.name ?? "Voice")
-                    .font(.subheadline.weight(.semibold))
-                    .lineLimit(1)
-                Image(systemName: "chevron.up.chevron.down")
-                    .font(.caption2)
-            }
-            .foregroundStyle(.primary)
         }
         .onAppear { speech.requestPersonalVoiceIfNeeded() }
+        .alert("Download a Voice", isPresented: $showVoiceSetupAlert) {
+            Button("Open Accessibility") {
+                openVoiceSettings()
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Go to Spoken Content → Voices → English, then download an Enhanced or Premium voice.")
+        }
+    }
+    
+    private var voiceMenuLabel: some View {
+        HStack(spacing: 3) {
+            Image(systemName: "waveform")
+                .font(.caption.weight(.semibold))
+            Text(speech.selectedVoice?.name ?? "Setup Voice")
+                .font(.subheadline.weight(.semibold))
+                .lineLimit(1)
+            Image(systemName: "chevron.up.chevron.down")
+                .font(.caption2)
+        }
+        .foregroundStyle(speech.hasEnhancedVoices ? Color.primary : Color.orange)
+    }
+    
+    private func openVoiceSettings() {
+        if let url = URL(string: "App-prefs:root=ACCESSIBILITY") {
+            UIApplication.shared.open(url)
+        } else if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+        }
     }
 
     private func isNonPersonalVoice(_ voice: AVSpeechSynthesisVoice, quality: AVSpeechSynthesisVoiceQuality) -> Bool {

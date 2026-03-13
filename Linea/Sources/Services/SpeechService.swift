@@ -10,6 +10,7 @@ class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     @Published var rate: Float = AVSpeechUtteranceDefaultSpeechRate
     @Published var selectedVoice: AVSpeechSynthesisVoice?
     @Published var availableVoices: [AVSpeechSynthesisVoice] = []
+    @Published var hasEnhancedVoices = false
 
     // MARK: - Private
     private let synthesizer = AVSpeechSynthesizer()
@@ -44,7 +45,7 @@ class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     }
 
     private func loadVoices() {
-        let all = AVSpeechSynthesisVoice.speechVoices()
+        let enhancedVoices = AVSpeechSynthesisVoice.speechVoices()
             .filter { voice in
                 guard voice.language.hasPrefix("en") else { return false }
                 // Exclude Eloquence character voices (Eddy, Flo, Grandma, Grandpa, Reed, Rocko, Sandy, Shelley, Tessa, Rishi…)
@@ -69,15 +70,12 @@ class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
                 }
                 return lhs.name < rhs.name
             }
-        // If no enhanced/premium voices downloaded yet, fall back to all non-eloquence English voices
-        let filtered = all.isEmpty ? AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language.hasPrefix("en") && !$0.identifier.contains("eloquence") }
-            .sorted { $0.quality.rawValue > $1.quality.rawValue }
-            : all
-        availableVoices = filtered
+        
+        availableVoices = enhancedVoices
+        hasEnhancedVoices = !enhancedVoices.isEmpty
 
-        if selectedVoice == nil || !filtered.contains(where: { $0.identifier == selectedVoice?.identifier }) {
-            selectedVoice = filtered.first
+        if selectedVoice == nil || !enhancedVoices.contains(where: { $0.identifier == selectedVoice?.identifier }) {
+            selectedVoice = enhancedVoices.first
         }
     }
 
@@ -132,6 +130,18 @@ class SpeechService: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
         
         currentWordRange = nil
         synthesizer.speak(makeUtterance(text: textFromOffset))
+        isPlaying = true
+    }
+
+    func pause() {
+        guard synthesizer.isSpeaking, !synthesizer.isPaused else { return }
+        synthesizer.pauseSpeaking(at: .word)
+        isPlaying = false
+    }
+
+    func resume() {
+        guard synthesizer.isSpeaking, synthesizer.isPaused else { return }
+        synthesizer.continueSpeaking()
         isPlaying = true
     }
 
