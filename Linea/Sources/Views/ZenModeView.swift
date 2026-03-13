@@ -5,6 +5,10 @@ struct ZenModeView: View {
     @ObservedObject var speech: SpeechService
     @Binding var windowSize: Int
     var onTap: (() -> Void)?
+    var onLongPressStart: (() -> Void)?
+    var onLongPressEnd: (() -> Void)?
+
+    @State private var isHeld = false
 
     private var words: [String] {
         chapter.text
@@ -42,9 +46,25 @@ struct ZenModeView: View {
                 .padding(.horizontal, 24)
                 .padding(.bottom, 100)
             }
+
         }
         .contentShape(Rectangle())
         .onTapGesture { onTap?() }
+        .gesture(
+            LongPressGesture(minimumDuration: 0.4)
+                .sequenced(before: DragGesture(minimumDistance: 0))
+                .onChanged { value in
+                    if case .second = value, !isHeld {
+                        isHeld = true
+                        onLongPressStart?()
+                    }
+                }
+                .onEnded { _ in
+                    guard isHeld else { return }
+                    isHeld = false
+                    onLongPressEnd?()
+                }
+        )
     }
 
     // MARK: - Horizontal word row
